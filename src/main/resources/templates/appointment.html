@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointments</title>
+</head>
+<body>
+<h1>Appointments</h1>
+<h2>Get Appointments info by time slot</h2>
+<form method="post" th:action="@{/appointments/info}">
+    Start time: <input type="text" name="start" th:value="${start}" /><br />
+    End time: <input type="text" name="end" th:value="${end}" /><br />
+    <input type="submit" value="Get Appointments" />
+</form>
+<h2>Create an appointment</h2>
+<form method="post" th:action="@{/appointments/create}">
+    <input type="hidden" name="userId" th:value="${userId}" />
+    Title: <input type="text" name="title" /><br />
+    Start time(yyyy-MM-ddTHH:mmZ): <input type="text" name="start" /><br />
+    End time(yyyy-MM-ddTHH:mmZ): <input type="text" name="end" /><br />
+    <input type="submit" value="Create Appointment" />
+</form>
+<h2>Get appointment by id</h2>
+<form method="post" th:action="@{/appointments/get}">
+    Appointment ID: <input type="text" name="id" /><br />
+    <input type="submit" value="Get Appointment" />
+</form>
+<h2>Get appointments by user id</h2>
+<form method="post" th:action="@{/appointments/user}">
+    User ID: <input type="text" name="userId" /><br />
+    <input type="submit" value="Get Appointments" />
+</form>
+<h2>Update an appointment</h2>
+<form method="post" th:action="@{/appointments/update}">
+    Appointment ID: <input type="text" name="id" /><br />
+    Title: <input type="text" name="title" /><br />
+    Start time: <input type="text" name="start" /><br />
+    End time: <input type="text" name="end" /><br />
+    <input type="submit" value="Update Appointment" />
+</form>
+<h2>Delete an appointment</h2>
+<form method="post" th:action="@{/appointments/delete}">
+    Appointment ID: <input type="text" name="id" /><br />
+    <input type="submit" value="Delete Appointment" />
+</form>
+</body>
+</html>
