@@ -1,0 +1,21 @@
+version: "3"
+services:
+  mongoOB:
+    image: mongo:4.0
+    container_name: mongoOB
+    ports:
+      - "27017:27017"
+    expose:
+      - "27017"
+  ob:
+    image: onlinebooking
+    container_name: ob
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongoOB
+    environment:
+      - SPRING_DATA_MONGODB_HOST=mongo
+    build:
+      context: ../../..
+      dockerfile: Dockerfile             
