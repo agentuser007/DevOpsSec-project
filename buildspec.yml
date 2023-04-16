@@ -7,9 +7,9 @@ phases:
     commands:
       - apt-get update
       - apt-get install -y jq
-      - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
-      - unzip ./sonar-scanner-cli-3.3.0.1492-linux.zip
-      - export PATH=$PATH:./sonar-scanner-3.3.0.1492-linux/bin/
+      - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
+      - unzip ./sonar-scanner-cli-4.6.2.2472-linux.zip
+      - export PATH=$PATH:./sonar-scanner-4.6.2.2472-linux/bin/
   pre_build:
     commands:
       - sonar-scanner -Dsonar.organization=agentuser007 -Dsonar.projectKey=x22174435-doss -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=f9d73b178018f1f6b1c2ee9919ae486779d1afae
