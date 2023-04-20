@@ -3,19 +3,10 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: corretto17
-    commands:
-      - apt-get update
-      - apt-get install -y jq
-      - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
-      - unzip ./sonar-scanner-cli-4.7.0.2747-linux.zip
-      - export PATH=$PATH:./sonar-scanner-4.7.0.2747-linux/bin/
+    java: corretto17
   pre_build:
     commands:
-      - sonar-scanner -Dsonar.organization=agentuser007 -Dsonar.projectKey=x22174435-doss -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=f9d73b178018f1f6b1c2ee9919ae486779d1afae
-      - sleep 5
-      - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=x22174435-doss > analysis.json
-      - cat analysis.json
+      - mvn test
   build:
     commands:
       - echo Build started on `date`
@@ -25,6 +16,6 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - target/OnlineBooking-0.0.1-SNAPSHOT.jar
+    - target/*.jar
     - appspec.yml
   discard-paths: yes
